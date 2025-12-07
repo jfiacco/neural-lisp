@@ -2,8 +2,6 @@
 
 A pure Common Lisp neural network library showcasing **Lisp's unique strengths**: macros, condition system, homoiconicity, CLOS, and functional programming.
 
-**This is not "PyTorch in Lisp"** - it's a demonstration of what neural networks look like when you leverage Lisp's features that Python cannot match.
-
 ## 🎯 Advanced Architectures
 
 Now includes **state-of-the-art deep learning architectures**:
@@ -12,21 +10,6 @@ Now includes **state-of-the-art deep learning architectures**:
 - **🤖 Transformers:** Multi-head attention, encoder-decoder, positional encoding
 - **🏷️ CRF:** Linear-chain, Tree CRF for structured prediction
 - **🚀 State Space Models:** Mamba, S4 (100K+ token contexts!)
-
-See [ADVANCED-ARCHITECTURES.md](docs/ADVANCED-ARCHITECTURES.md) for complete documentation.
-
-## Why Lisp?
-
-Unlike Python/PyTorch, this library uses:
-
-- **Macros**: Compile-time code generation (zero-overhead abstractions)
-- **Condition System**: Resumable error handling (not just exceptions)
-- **Homoiconicity**: Code-as-data for symbolic graph optimization
-- **CLOS**: Multiple dispatch and method combinations
-- **Functional Programming**: First-class functions, composition, currying
-- **Interactive REPL**: Live coding without kernel restarts
-
-See [LISP-ADVANTAGES.md](docs/LISP-ADVANTAGES.md) for detailed comparison with Python.
 
 ## Unique Features
 
@@ -64,15 +47,92 @@ See [LISP-ADVANTAGES.md](docs/LISP-ADVANTAGES.md) for detailed comparison with P
   (train model))
 ```
 
-## Standard Features
+## Core Features
 
+### Tensor Operations & Autograd
 - **Automatic Differentiation**: PyTorch-style autograd with computational graph tracking
 - **NumPy-style Broadcasting**: Automatic shape alignment for tensor operations
-- **Neural Network Layers**: Linear, ReLU, Sigmoid, Sequential containers
-- **Optimizers**: SGD (with momentum), Adam, AdamW, RMSprop, AdaGrad, AdaDelta
-- **Loss Functions**: MSE, MAE, Cross-Entropy, BCE, Huber, KL-Divergence
-- **Learning Rate Schedulers**: StepLR, CosineAnnealing, ReduceOnPlateau, Cyclic
-- **Multiple Backends**: Automatic CPU/BLAS/GPU selection
+- **Multiple Backends**: Automatic CPU/BLAS/CUDA GPU selection with configurable thresholds
+
+### Neural Network Layers
+- **Basic Layers**: Linear, Sequential containers
+- **Activation Functions**: ReLU, Sigmoid, Tanh, Softmax, Log-Softmax
+- **ReLU Variants**: Leaky ReLU, ELU, SELU, GELU, Swish, Mish, HardSwish, ReLU6
+- **Advanced Activations**: GLU, GeGLU, SwiGLU, Softsign, Softplus, Maxout
+- **Normalization**: Layer Normalization, Batch Normalization
+
+### Convolutional Networks
+- **N-Dimensional Convolutions**: Conv1D, Conv2D, Conv3D, ConvND
+- **Pooling Layers**: Max/Avg Pooling (1D/2D/3D), Global Pooling, Spatial Pyramid Pooling
+- **Transposed Convolutions**: Deconvolution layers for upsampling
+- **Separable & Dilated**: Depthwise separable, dilated/atrous convolutions
+
+### Recurrent Networks
+- **RNN Cells**: Vanilla RNN, LSTM, GRU
+- **Bidirectional**: Bidirectional RNN, LSTM, GRU
+- **Stacked RNN**: Multi-layer recurrent networks
+- **Attention RNN**: Recurrent networks with attention mechanisms
+
+### Transformers
+- **Attention Mechanisms**: Scaled dot-product attention, Multi-head attention
+- **Positional Encodings**: Sinusoidal, Rotary (RoPE), ALiBi
+- **Transformer Blocks**: Encoder layers, Decoder layers, Full Transformer
+- **Efficient Attention**: Flash attention, Sparse attention patterns
+
+### State Space Models
+- **S4**: Structured State Space Sequence models
+- **Mamba**: Selective state space models for 100K+ token contexts
+- **Samba**: Hybrid SSM architectures
+- **HiPPO Initialization**: High-order Polynomial Projection Operator
+
+### Conditional Random Fields
+- **Linear-Chain CRF**: For sequence labeling (NER, POS tagging)
+- **Tree CRF**: For tree-structured prediction
+- **Semi-Markov CRF**: For segment-level prediction
+- **Viterbi Decoding**: Optimal sequence inference
+
+### Residual Architectures
+- **ResNet Blocks**: Basic blocks, Bottleneck blocks, Downsample layers
+- **EfficientNet Blocks**: MBConv, Squeeze-Excitation, Fused-MBConv
+- **ConvNeXt Blocks**: Modern ConvNet building blocks
+- **Regularization**: Stochastic Depth, Layer Scale
+
+### Embeddings
+- **Token Embeddings**: Word embeddings with padding support
+- **Subword Embeddings**: For subword tokenization
+- **Positional Encodings**: Sinusoidal and learned positional embeddings
+- **Special Embeddings**: OOV handling, Numerical, Byte-level
+
+### Variational Inference
+- **Gumbel-Softmax**: Differentiable categorical sampling
+- **Reparameterization**: Normal, Bernoulli, Categorical, Dirichlet
+- **VAE Components**: Encoder, Decoder, KL divergence
+- **Stochastic Layers**: Gaussian and Categorical variational layers
+
+### Optimizers
+- **SGD**: Vanilla and with momentum, dampening, weight decay
+- **Adam Family**: Adam, AdamW (decoupled weight decay), NAdam, Adamax, AMSGrad
+- **Adaptive**: RMSprop, AdaGrad, AdaDelta
+- **Gradient Clipping**: By norm and by value
+
+### Loss Functions
+- **Regression**: MSE, MAE, Smooth L1 (Huber)
+- **Classification**: Cross-Entropy, Binary Cross-Entropy, NLL
+- **Divergence**: KL-Divergence
+- **Structured**: CRF Loss
+
+### Learning Rate Schedulers
+- **Step-based**: StepLR, Exponential
+- **Cyclic**: CosineAnnealing, Cyclic LR, One-Cycle
+- **Adaptive**: ReduceOnPlateau
+
+### Data Loading
+- **Dataset Types**: Tensor, Sequence, Image, Text, CSV, JSON, Arrow
+- **HuggingFace Compatible**: Load datasets in HuggingFace/PyTorch format
+- **Samplers**: Sequential, Random, Weighted, Distributed
+- **Processing**: Map, Filter, Train/Test split, Concatenation
+
+### Testing
 - **Comprehensive Test Suite**: 70+ tests using FiveAM
 
 ## Installation
