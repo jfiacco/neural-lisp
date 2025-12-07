@@ -1,0 +1,30 @@
+# Compiled files
+*.fasl
+*.dfsl
+*.pfsl
+*.d64fsl
+*.p64fsl
+*.lx64fsl
+*.lib
+*.dll
+*.so
+*.dylib
+
+# Temporary files
+*.lisp-temp
+*~
+#*#
+.#*
+\#*#
+.DS_Store
+
+# Quicklisp-related files (if using Quicklisp)
+quicklisp/
+local-projects/
+
+docs/
+examples/
+scripts/
+data/
+
+.claude/
